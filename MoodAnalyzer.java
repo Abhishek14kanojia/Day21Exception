@@ -2,24 +2,35 @@ package com.day21Exception;
 
 public class MoodAnalyzer {
 
-	public String moodAnalyzer(String message) {
-		if(message.toLowerCase().contains("happy")) {
-			return"Happy";
-			
-		}else if(message.toLowerCase().contains("sad")) {
-			return "Sad";
-		}else {
-			return null;
-		}
-		
-		
+	private String message;
+
+
+	public MoodAnalyzer(String message) {
+		this.message = message;
 	}
-	public static void main(String[] args) {
-		MoodAnalyzer moods = new MoodAnalyzer();
-		String mood = moods.moodAnalyzer("I Am Happy");
-		System.out.println(mood);
-		mood = moods.moodAnalyzer("I Am Sad");
-		System.out.println(mood);
+	public  MoodAnalyzer() {
+	
 	}
+	public String getMessage() {
+		return message;
+	}
+	
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	
+	 public String analyseMood() {
+	        try {
+	            if (message.toLowerCase().contains("sad")) {
+	                return "Sad";
+	            } else if (message.toLowerCase().contains("happy")) {
+	                return "Happy";
+	            } else {
+	                return "Any";
+	            }
+	        } catch (NullPointerException e) {
+	            return "Invalid Mood";
+	        }
+	 }
 
 }
